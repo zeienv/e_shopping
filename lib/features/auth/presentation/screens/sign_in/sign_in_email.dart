@@ -36,29 +36,29 @@ class _SignInEmailState extends State<SignInEmail> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => di<LoginBloc>(), // Inject your LoginBloc from service_locator
-      child: SingleChildScrollView(
-        child: Scaffold(
-          backgroundColor: AppColors.backgroundColor,
-          body: BlocListener<LoginBloc, LoginState>(
-            listener: (context, state) {
-              if (state is LoginLoading) {
-                showDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (_) => const Center(child: CircularProgressIndicator()),
-                );
-              } else if (state is LoginSuccess) {
-                Navigator.pop(context); // Close dialog
-                Navigator.pushNamed(context, RouteNames.homePage);
-              } else if (state is LoginFailure) {
-                Navigator.pop(context); // Close dialog
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(state.message)),
-                );
-              }
-            },
+      child: Scaffold(
+        backgroundColor: AppColors.backgroundColor,
+        body: BlocListener<LoginBloc, LoginState>(
+          listener: (context, state) {
+            if (state is LoginLoading) {
+              showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (_) => const Center(child: CircularProgressIndicator()),
+              );
+            } else if (state is LoginSuccess) {
+              Navigator.pop(context); // Close dialog
+              Navigator.pushNamed(context, RouteNames.homePage);
+            } else if (state is LoginFailure) {
+              Navigator.pop(context); // Close dialog
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.message)),
+              );
+            }
+          },
+          child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 120),
               child: Form(
                 key: _formKey,
                 child: Column(
