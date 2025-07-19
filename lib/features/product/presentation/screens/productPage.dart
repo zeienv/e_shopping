@@ -41,7 +41,6 @@ class ProductPage extends StatelessWidget {
       print('ProductPage received product: id=${product.id}, title=${product.title}, price=${product.price}, images=${product.images}, category=${product.category}');
     }
     return Scaffold(
-
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColor,
