@@ -35,7 +35,7 @@ class _SignInEmailState extends State<SignInEmail> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => di<LoginBloc>(), // Inject your LoginBloc from service_locator
+      create: (context) => di<LoginBloc>(),
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         body: BlocListener<LoginBloc, LoginState>(
@@ -58,13 +58,15 @@ class _SignInEmailState extends State<SignInEmail> {
           },
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 120),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Form(
                 key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
+                    const SizedBox(height: 60),
                     const Text(
                       "Sign in",
                       style: TextStyle(
